@@ -1,0 +1,136 @@
+.main-color {
+    color: #FCD535
+}
+
+.bg-main-color {
+    background-color: #FCD535
+}
+
+.bg-main-color-gradient {
+    background: rgb(252, 213, 53);
+    background: linear-gradient(90deg, #FFCC32 0%, #F8FD00 100%);
+}
+.bg-main-color-gradient:hover {
+    background: rgb(252, 213, 53);
+    background: linear-gradient(90deg, #FFCC32 0%, #F8FD00 100%);
+}
+.bg-main-color-gradient:focus {
+    background: rgb(252, 213, 53);
+    background: linear-gradient(90deg, #FFCC32 0%, #F8FD00 100%);
+}
+
+
+.bg-grey-gradient-top {
+    background: rgb(18, 18, 18);
+    background: linear-gradient(360deg, rgba(6, 8, 10, .5), rgba(6, 8, 10, 0))
+}
+
+.bg-main-color-gradient-1 {
+    background: rgb(250, 246, 62);
+    background: linear-gradient(180deg, rgba(250, 246, 62, 0.6264880952380952) 0%, rgba(255, 253, 244, 1) 100%);
+}
+
+.main-button-color {
+    border-color: rgb(250, 246, 62) !important;
+    background: linear-gradient(90deg, #FFC000 4.04%, #F8FD00 100%)!important;
+}
+
+.success-button-color {
+    background: gold!important;
+    border-color: rgb(250, 246, 62) !important;
+}
+
+.go-button-color {
+    background: white!important;
+    border-color:skyblue !important;
+}
+
+.main-button-color:focus {
+    color: black !important;
+}
+
+.secondary-button-color {
+    border-color: #FFC000 !important;
+    background-color: white;
+    color: #FFC000 !important;
+}
+
+.secondary-button-color:focus {
+    color: black !important;
+}
+
+.danger-button-color {
+    border-color: red !important;
+    background-color: white;
+    color: red !important;
+}
+
+.danger-button-color:focus {
+    color: red !important;
+}
+
+.box-shadow-top {
+    box-shadow: 1px -4px 13px -1px rgba(182, 175, 175, 0.35);
+    -webkit-box-shadow: 1px -4px 13px -1px rgba(182, 175, 175, 0.35);
+    -moz-box-shadow: 1px -4px 13px -1px rgba(182, 175, 175, 0.35);
+}
+
+.box-shadow-center {
+    box-shadow: 0px 0px 6px 1px rgba(182, 175, 175, 0.35);
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(182, 175, 175, 0.35);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(182, 175, 175, 0.35);
+}
+
+.box-shadow-light {
+    box-shadow: 0px 0px 12px rgba(255, 192, 0, 0.2);
+}
+
+.success-color {
+    color: #4BB543 !important;
+}
+
+.danger-color {
+    color: red !important;
+}
+
+.main-color-box-shadow {
+    box-shadow: 0px 0px 2px 2px rgba(252, 213, 53, 0.83);
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(252, 213, 53, 0.83);
+    -moz-box-shadow: 0px 0px 2px 2px rgba(252, 213, 53, 0.83);
+}
+
+.button-padding {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.sup {
+    position: relative;
+    bottom: 1ex;
+    font-size: 80%;
+}
+
+.text-truncate-threeline {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-truncate-twoline {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-truncate-fiveline {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
