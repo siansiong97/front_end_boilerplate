@@ -1,30 +1,34 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "One Bot",
+    title: "BoilerPlate",
   },
-  flags: {
-    PARALLEL_QUERY_RUNNING: true
-  },
-  plugins: [`gatsby-plugin-react-helmet`,
+  plugins: [
+    "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-plugin-less`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        lessOptions: {
-            javascriptEnabled: true,
-            modifyVars: {
-              'primary-color': '#FCD535',
-              'text-color' : 	'#000000',
-              'link-color' : '#000000',
-            }
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-antd',
-      options: {
-        style: true
+        path: `${__dirname}/locales`,
+        name: `locale`
       }
     },
-  ],
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`,
+        languages: [`cn`, `en`,],
+        defaultLanguage: `cn`,
+        fallbackLng: 'cn',
+        siteUrl: `http://localhost:8000/`,
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false
+          },
+          keySeparator: false,
+          nsSeparator: false
+        },
+        pages: [
+        ]
+      }
+    }],
 };

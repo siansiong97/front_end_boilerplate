@@ -1,4 +1,4 @@
-import _, { isString } from 'lodash';
+import _ from 'lodash';
 var moment = require('moment');
 
 const defaultRangeSmaller = '<='
@@ -8,11 +8,11 @@ const availableFilters = ['make', 'model', 'title', 'condition', 'transmission',
 export function isNumberAndSpace(value) {
 
     //to array
-    if (value !== null) {
+    if (value != null) {
         value = value.split('');
         if (
             value.filter(function (item, index) {
-                return !parseInt(item) && parseInt(item) !== 0 && item !== ' ';
+                return !parseInt(item) && parseInt(item) != 0 && item != ' ';
             }).length > 0
         ) {
             return false;
@@ -27,12 +27,12 @@ export function isNumberAndSpace(value) {
 
 export function formatDate(value, format) {
 
-    if (value) {
+    if (value != null) {
         if (!isValidDate(value)) {
             return null;
         } else {
 
-            if (format === null) {
+            if (format == null) {
                 format = "DD/MM/YYYY"
             }
 
@@ -46,7 +46,7 @@ export function formatDate(value, format) {
 
 export function formatNumber(value, unit, round, fixedPoint, trim) {
 
-    if (value !== null) {
+    if (value != null) {
         if (isNaN(parseFloat(value))) {
             return value;
         } else {
@@ -89,7 +89,7 @@ export function formatNumber(value, unit, round, fixedPoint, trim) {
             }
 
             let formatedValue = '';
-            let prefix =  insertBetween(parseInt(value), 3, ',', true, true);
+            let prefix = insertBetween(parseInt(value), 3, ',', true, true);
             let postfix = value.toString().split('.')[1];
             formatedValue += prefix;
             if (postfix) {
@@ -102,7 +102,6 @@ export function formatNumber(value, unit, round, fixedPoint, trim) {
             if (unit) {
                 formatedValue += unit;
             }
-            formatedValue = (parseFloat(value) < 0 ? '-' : '') + formatedValue
 
 
 
@@ -116,7 +115,7 @@ export function formatNumber(value, unit, round, fixedPoint, trim) {
 
 export function numberToFixed(value, round, fixedPoint, fromFront) {
 
-    if (value !== null && !isNaN(parseFloat(value))) {
+    if (value != null && !isNaN(parseFloat(value))) {
 
         if (isNaN(parseInt(fixedPoint))) {
             //Default
@@ -125,7 +124,7 @@ export function numberToFixed(value, round, fixedPoint, fromFront) {
             fixedPoint = parseInt(fixedPoint);
         }
 
-        if (round === null) {
+        if (round == null) {
             round = true;
         }
 
@@ -177,18 +176,18 @@ export function numberToFixed(value, round, fixedPoint, fromFront) {
 //Remove prefix 0 and postfix 0
 export function trimStringNumber(value) {
 
-    if (value !== null) {
+    if (value != null) {
 
         value = value.toString().split('.');
         let prefix = value[0];
         let postfix = value[1];
 
-        if (prefix !== null) {
+        if (prefix != null) {
             if (prefix.length > 1) {
                 let prefixArr = prefix.split("");
                 let done = false;
                 prefixArr.some(num => {
-                    if (num === '0') {
+                    if (num == '0') {
                         //cut out 0
                         prefix = prefix.substring(1);
                     } else {
@@ -199,12 +198,12 @@ export function trimStringNumber(value) {
             }
         }
 
-        if (postfix !== null) {
+        if (postfix != null) {
             if (postfix.length > 0) {
                 let postfixArr = postfix.split("").reverse();
                 let done = false;
                 postfixArr.some(num => {
-                    if (num === '0') {
+                    if (num == '0') {
                         //cut out 0
                         postfix = postfix.substring(0, postfix.length - 1);
                     } else {
@@ -228,7 +227,7 @@ export function trimStringNumber(value) {
 
 export function reverseString(value) {
 
-    if (value !== null) {
+    if (value != null) {
         var strArray = value.toString().split("");
         strArray = strArray.reverse();
         return strArray.join("");
@@ -240,12 +239,12 @@ export function reverseString(value) {
 
 
 export function checkCardType(number) {
-    if (number !== null) {
+    if (number != null) {
 
         number = number.replace(/\s/g, '');
         // visa
         var re = new RegExp("^4");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "VISA";
 
         // Mastercard 
@@ -255,32 +254,32 @@ export function checkCardType(number) {
 
         // AMEX
         re = new RegExp("^3[47]");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "AMERICANEXPRESS";
 
         // Discover
         re = new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "DISCOVER";
 
         // Diners
         re = new RegExp("^36");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "DINERS";
 
         // Diners - Carte Blanche
         re = new RegExp("^30[0-5]");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "DINERSCARTEBLANCHE";
 
         // JCB
         re = new RegExp("^35(2[89]|[3-8][0-9])");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "JCB";
 
         // Visa Electron
         re = new RegExp("^(4026|417500|4508|4844|491(3|7))");
-        if (number.match(re) !== null)
+        if (number.match(re) != null)
             return "VISAELECTRON";
 
     }
@@ -291,7 +290,7 @@ export function removeNullFromArray(value) {
 
     if (notEmptyLength(value)) {
         return value.filter(function (item) {
-            return item !== null;
+            return item != null;
         })
     }
 
@@ -299,7 +298,7 @@ export function removeNullFromArray(value) {
 }
 export function isValidDate(value) {
 
-    if (value !== null) {
+    if (value != null) {
         value = new Date(value);
         if (Object.prototype.toString.call(value) === "[object Date]") {
             // it is a date
@@ -318,11 +317,11 @@ export function isValidDate(value) {
 
 export function calculateTimeRange(date1, date2, unit, precise) {
 
-    if (date1 !== null) {
+    if (date1 != null) {
         if (isValidDate(date1)) {
             date1 = moment(date1);
 
-            if (date2 !== null) {
+            if (date2 != null) {
                 if (isValidDate(date2)) {
                     date2 = moment(date2);
                 } else {
@@ -390,7 +389,7 @@ export function calculateTimeRange(date1, date2, unit, precise) {
 
 export function convertMilliSecondsToTime(millisecond, minUnit) {
 
-    if (millisecond !== null && isValidNumber(parseInt(millisecond))) {
+    if (millisecond != null && isValidNumber(parseInt(millisecond))) {
 
         let second = 0, minute = 0, hour = 0;
         let finalTime = '';
@@ -431,11 +430,11 @@ export function convertMilliSecondsToTime(millisecond, minUnit) {
 }
 export function isExpired(date, aspect) {
 
-    if (aspect === null) {
+    if (aspect == null) {
         aspect = 'second';
     }
 
-    if (date !== null && isValidDate(date)) {
+    if (date != null && isValidDate(date)) {
         var today = moment();
         date = moment(date);
         return today.isAfter(date, aspect);
@@ -444,7 +443,7 @@ export function isExpired(date, aspect) {
 }
 export function convertToCardFormat(value) {
 
-    if (value !== null) {
+    if (value != null) {
         value = value.replace(/\s/g, '');
         value = insertBetween(value, 4, ' ');
     }
@@ -454,10 +453,10 @@ export function convertToCardFormat(value) {
 
 export function convertToExpiredDateFormat(value) {
 
-    if (value !== null) {
+    if (value != null) {
         var str = value.split('');
         if (str.length < 3) {
-            if (str[1] === '/') {
+            if (str[1] == '/') {
                 str.splice(0, 0, '0');
                 value = str.join("");
             } else {
@@ -473,7 +472,7 @@ export function convertToExpiredDateFormat(value) {
 
 export function insertBetween(value, space, char, fromBack, stopAtEnd) {
 
-    if (value !== null) {
+    if (value != null) {
         if (isNaN(parseInt(space))) {
             return value;
         } else {
@@ -485,8 +484,8 @@ export function insertBetween(value, space, char, fromBack, stopAtEnd) {
             var addedspacecount = 1;
             space = parseInt(space);
             for (let index = 0; index < length; index++) {
-                if (index !== 0 && (index + 1) % space === 0) {
-                    if (stopAtEnd && index === length - 1) {
+                if (index != 0 && (index + 1) % space == 0) {
+                    if (stopAtEnd && index == length - 1) {
                         break;
                     }
                     oristr.splice(index + addedspacecount, 0, char);
@@ -505,21 +504,21 @@ export function insertBetween(value, space, char, fromBack, stopAtEnd) {
 }
 
 export function checkSupportedCardType(card) {
-    if (card !== null) {
+    if (card != null) {
         // visa
-        if (card === 'VISA') {
+        if (card == 'VISA') {
             return true;
         }
 
-        if (card === 'MASTERCARD') {
+        if (card == 'MASTERCARD') {
             return true;
         }
 
-        if (card === 'VISAELECTRON') {
+        if (card == 'VISAELECTRON') {
             return true;
         }
 
-        if (card === 'AMERICANEXPRESS') {
+        if (card == 'AMERICANEXPRESS') {
             return true;
         }
 
@@ -531,16 +530,16 @@ export function isValidNumber(value) {
 }
 export function isExpiryDateFormat(value) {
 
-    if (value !== null) {
+    if (value != null) {
         //to array
         value = value.split('');
         if (
             value.filter(function (item, index) {
-                if (index === 2) {
-                    return item !== '/';
+                if (index == 2) {
+                    return item != '/';
                 }
 
-                return !parseInt(item) && parseInt(item) !== 0;
+                return !parseInt(item) && parseInt(item) != 0;
             }).length > 0
         ) {
             return false;
@@ -589,7 +588,7 @@ export function sortByDateDesc(data, col) {
 
 export function findData(data, col, val) {
     return data.filter(function (item) {
-        return item[col] === val;
+        return item[col] == val;
     })
 }
 export function hideStringNumber(string, start, end) {
@@ -699,14 +698,14 @@ export function deepEqual(object1, object2) {
 }
 
 export function isObject(object) {
-    return object !== null && typeof object === 'object';
+    return object != null && typeof object === 'object';
 }
 
 export function deepEqualArrayObject(array1, array2) {
 
 
     if (Array.isArray(array1) && Array.isArray(array2)) {
-        if (array1.length !== array2.length) {
+        if (array1.length != array2.length) {
             return false;
         } else {
             for (let x = 0; x < array1.length; x++) {
@@ -726,7 +725,7 @@ export function deepEqualArrayObject(array1, array2) {
 
 export function roundToHalf(number) {
 
-    if (number !== null) {
+    if (number != null) {
         if (!isNaN(parseFloat(number))) {
             var decimal = parseFloat(number);
             var int = parseInt(number);
@@ -763,11 +762,11 @@ export function convertRangeFormatBack(valueArr) {
         let parameter2 = valueArr[1];
         let data = [,]
 
-        if (parameter2 === defaultRangeSmaller || parameter2 === defaultRangeBigger) {
-            if (parameter2 === defaultRangeBigger) {
+        if (parameter2 == defaultRangeSmaller || parameter2 == defaultRangeBigger) {
+            if (parameter2 == defaultRangeBigger) {
                 data[0] = parameter1;
             }
-            if (parameter2 === defaultRangeSmaller) {
+            if (parameter2 == defaultRangeSmaller) {
                 data[1] = parameter1;
             }
             return data;
@@ -783,15 +782,15 @@ export function convertRangeFormatToText(formatedRange, valueFormat) {
 
     function convertValue(value, format) {
 
-        if (format === 'price') {
+        if (format == 'price') {
             return `RM ${formatNumber(value, null, true, 2, true)}`
         }
 
-        if (format === 'mileage') {
+        if (format == 'mileage') {
             return `${formatNumber(value, null, true, 2, true)} km`
         }
 
-        if (format === 'engineCapacity') {
+        if (format == 'engineCapacity') {
             return `${formatNumber(value, null, true, 2, true)} cc`
         }
         return value;
@@ -801,9 +800,9 @@ export function convertRangeFormatToText(formatedRange, valueFormat) {
         let parameter2 = formatedRange[1];
         let text = '';
 
-        if (parameter2 === defaultRangeBigger) {
+        if (parameter2 == defaultRangeBigger) {
             text = `above ${convertValue(parameter1, valueFormat)}`
-        } else if (parameter2 === defaultRangeSmaller) {
+        } else if (parameter2 == defaultRangeSmaller) {
             text = `below ${convertValue(parameter1, valueFormat)}`
         } else {
             text = `between ${convertValue(parameter1, valueFormat)} and ${convertValue(parameter2, valueFormat)}`
@@ -827,7 +826,7 @@ export function convertFilterRange(value, name) {
             return null;
         }
 
-        if (parameter2 !== null) {
+        if (parameter2 != null) {
 
             switch (parameter2) {
                 case '<=':
@@ -938,11 +937,11 @@ export function toSnakeCase(value, seperator) {
         value = value.toString().split('')
         let finalData = []
         _.forEach(value, function (item, index) {
-            if (index === 0) {
+            if (index == 0) {
                 finalData.push(_.lowerCase(item));
             } else {
 
-                if (item === _.upperCase(item)) {
+                if (item == _.upperCase(item)) {
                     finalData.push(seperator);
                 }
 
@@ -1017,7 +1016,7 @@ export function findIndexesOfString(text, search) {
         let currentPosition = 0;
         while (currentPosition < text.length) {
             currentPosition = text.indexOf(search, currentPosition);
-            if (currentPosition === -1) {
+            if (currentPosition == -1) {
                 currentPosition = text.length;
             } else {
                 indexes.push(currentPosition);
@@ -1034,9 +1033,9 @@ export function findIndexesOfString(text, search) {
 
 export function checkObjectId(data, idForCheck, col) {
     if (_.isPlainObject(data) && !_.isEmpty(data)) {
-        return data[`${col || '_id'}`] === idForCheck;
+        return data[`${col || '_id'}`] == idForCheck;
     } else {
-        return data === idForCheck;
+        return data == idForCheck;
     }
 }
 
@@ -1048,47 +1047,22 @@ export function getObjectId(data, col) {
     }
 }
 export function windowScroll(x = 0, y = 0) {
-    if (typeof (window) !== undefined) {
+    if (typeof (window) != undefined) {
         window.scroll(x, y)
     }
 
 }
 
 export function getWindowInnerHeight() {
-    if (typeof (window) !== undefined) {
+    if (typeof (window) != undefined) {
         return window.innerHeight;
     }
 
 }
 
 export function getWindowInnerWidth() {
-    if (typeof (window) !== undefined) {
+    if (typeof (window) != undefined) {
         return window.innerWidth;
     }
 
-}
-
-
-export function getCoinTypeIcon(type = '') {
-    if (!isString(type)) {
-        return '';
-    } else {
-        return `https://asset.one-bot.net/crypicons/32/icon/${type}.png`
-        // return `https://onebot.etrnsolutions.com/crypicons/32/icon/${type}.png`
-    }
-}
-
-export function formatAmount(x) {
-    if (x) {
-        if (x >= 1) {
-            return x.toFixed(2)
-        }
-        //restructure no
-        let decimalPos = x.toString().replace('0.', '').split('0').findIndex((i) => { return i !== '' })
-        let y = (10 ** (decimalPos + 4))
-        let x2 = Math.round(x * y)
-        let result = x2 / y
-        return result
-    }
-    return '-'
 }

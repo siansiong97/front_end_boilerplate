@@ -1,5 +1,5 @@
 import { get, isEqual, set } from "lodash";
-import { LOGIN_SUCCESSFUL, LOGOUT_SUCCESSFUL, UPDATE_USER } from "../actions/user-actions";
+import { LOGIN_SUCCESSFUL, LOGOUT_SUCCESSFUL } from "../actions/user-actions";
 import { persistRedux } from "../config";
 import localStorage from "local-storage";
 
@@ -32,14 +32,6 @@ export default function (state = INITIAL_STATE, action) {
             set(state, 'isAuthenticated', false);
             set(state, 'accessKey', INITIAL_STATE.accessKey);
             break;
-
-        case UPDATE_USER:
-            state.user = {
-                ...state.user,
-                ...get(action, 'user')
-            }
-            break;
-
 
         default:
             break;
