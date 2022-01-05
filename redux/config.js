@@ -1,8 +1,5 @@
-
 import localStorage from "local-storage";
-import { isEmpty } from "lodash";
-import isPlainObject from "lodash.isplainobject";
-
+import { isEmpty, isPlainObject } from "lodash";
 export function persistRedux(reducer, data) {
 
     if (reducer && isPlainObject(data) && !isEmpty(data)) {
