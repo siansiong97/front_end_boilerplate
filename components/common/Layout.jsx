@@ -12,7 +12,7 @@ const Layout = (props) => {
         <React.Fragment>
             <Spin spinning={props.loading === true}>
                 <div className="flex justify-center">
-                    <div className="min-h-screen relative border-2 border-red-400" style={{ minWidth: 1000, maxWidth: 1200 }}>
+                    <div className="min-h-screen relative" style={{ minWidth: 1000, maxWidth: 1200 }}>
                         <div className="" style={{ minHeight: '90vh' }}>
                             {
                                 props.children

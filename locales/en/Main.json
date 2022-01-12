@@ -1,3 +1,13 @@
 {
-    "test" : "Test xia"
+    "test": "Test xia",
+    "invalidForm": "Invalid Form Submition",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "action": "Action",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmation": "Are you sure?",
+    "columnNotFound": "Columns Not Found",
+    "submit": "Submit"
 }
